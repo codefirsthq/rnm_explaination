@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rnm_explaination/presentation/home/character/character_search_page.dart';
 
 class CharacterPage extends StatefulWidget {
   const CharacterPage({Key? key}) : super(key: key);
@@ -29,7 +31,9 @@ class _CharacterPageState extends State<CharacterPage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
           child: TextFormField(
-            onTap: () {},
+            onTap: () {
+              Get.toNamed(CharacterSearchPage.TAG);
+            },
             readOnly: true,
             decoration: InputDecoration(
               hintText: "Search Character",

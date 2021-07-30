@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rnm_explaination/presentation/home/character/character_page.dart';
 
 class HomePage extends StatefulWidget {
+  static const String TAG = '/home_page';
   const HomePage({Key? key}) : super(key: key);
 
   @override
