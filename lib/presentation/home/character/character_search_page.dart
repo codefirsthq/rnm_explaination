@@ -11,7 +11,7 @@ class CharacterSearchPage extends StatefulWidget {
 }
 
 class _CharacterSearchPageState extends State<CharacterSearchPage> {
-  final _searchController = Get.put(SearchController());
+  final _searchController = Get.find<SearchController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,60 +75,26 @@ class _CharacterSearchPageState extends State<CharacterSearchPage> {
                   alignment: WrapAlignment.start,
                   direction: Axis.horizontal,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        GetX<SearchController>(
-                          builder: (search) => Radio<String>(
-                            value: "Alive",
-                            toggleable: true,
-                            groupValue: search.getStatusGroup,
-                            onChanged: (e) {
-                              search.setStatusGroup(e);
-                            },
-                            materialTapTargetSize:
-                                MaterialTapTargetSize.shrinkWrap,
-                          ),
-                        ),
-                        Text("Alive")
-                      ],
+                    Obx(
+                      () => RadioCustomWidget(
+                          value: "Alive",
+                          group: _searchController.getStatusGroup,
+                          label: "Alive",
+                          onChanged: _searchController.setStatusGroup),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        GetX<SearchController>(
-                          builder: (search) => Radio<String>(
-                            value: "Dead",
-                            toggleable: true,
-                            //belum update
-                            groupValue: search.getStatusGroup,
-                            onChanged: (e) {
-                              search.setStatusGroup(e);
-                            },
-                            materialTapTargetSize:
-                                MaterialTapTargetSize.shrinkWrap,
-                          ),
-                        ),
-                        Text("Dead")
-                      ],
+                    Obx(
+                      () => RadioCustomWidget(
+                          value: "Dead",
+                          group: _searchController.getStatusGroup,
+                          label: "Dead",
+                          onChanged: _searchController.setStatusGroup),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        GetX<SearchController>(
-                          builder: (search) => Radio<String>(
-                            value: "Unknown",
-                            toggleable: true,
-                            groupValue: _searchController.getStatusGroup,
-                            onChanged: (e) {
-                              _searchController.setStatusGroup(e);
-                            },
-                            materialTapTargetSize:
-                                MaterialTapTargetSize.shrinkWrap,
-                          ),
-                        ),
-                        Text("Unknown")
-                      ],
+                    Obx(
+                      () => RadioCustomWidget(
+                          value: "Unknown",
+                          group: _searchController.getStatusGroup,
+                          label: "Unknown",
+                          onChanged: _searchController.setStatusGroup),
                     ),
                   ],
                 ),
@@ -144,77 +110,33 @@ class _CharacterSearchPageState extends State<CharacterSearchPage> {
                   alignment: WrapAlignment.start,
                   direction: Axis.horizontal,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        GetX<SearchController>(builder: (search) {
-                          return Radio<String>(
-                            value: "Female",
-                            toggleable: true,
-                            groupValue: search.getGenderGroup,
-                            onChanged: (e) {
-                              search.setGenderGroup(e);
-                            },
-                            materialTapTargetSize:
-                                MaterialTapTargetSize.shrinkWrap,
-                          );
-                        }),
-                        Text("Female")
-                      ],
+                    Obx(
+                      () => RadioCustomWidget(
+                          value: "Female",
+                          group: _searchController.getGenderGroup,
+                          label: "Female",
+                          onChanged: _searchController.setGenderGroup),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        GetX<SearchController>(
-                          builder: (search) => Radio<String>(
-                            value: "Male",
-                            toggleable: true,
-                            groupValue: search.getGenderGroup,
-                            onChanged: (e) {
-                              search.setGenderGroup(e);
-                            },
-                            materialTapTargetSize:
-                                MaterialTapTargetSize.shrinkWrap,
-                          ),
-                        ),
-                        Text("Male")
-                      ],
+                    Obx(
+                      () => RadioCustomWidget(
+                          value: "Male",
+                          group: _searchController.getGenderGroup,
+                          label: "Male",
+                          onChanged: _searchController.setGenderGroup),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        GetX<SearchController>(
-                          builder: (search) => Radio<String>(
-                            value: "Genderless",
-                            toggleable: true,
-                            groupValue: search.getGenderGroup,
-                            onChanged: (e) {
-                              search.setGenderGroup(e);
-                            },
-                            materialTapTargetSize:
-                                MaterialTapTargetSize.shrinkWrap,
-                          ),
-                        ),
-                        Text("Genderless")
-                      ],
+                    Obx(
+                      () => RadioCustomWidget(
+                          value: "Genderless",
+                          group: _searchController.getGenderGroup,
+                          label: "Genderless",
+                          onChanged: _searchController.setGenderGroup),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        GetX<SearchController>(
-                          builder: (search) => Radio<String>(
-                            value: "Unknown",
-                            toggleable: true,
-                            groupValue: search.getGenderGroup,
-                            onChanged: (e) {
-                              search.setGenderGroup(e);
-                            },
-                            materialTapTargetSize:
-                                MaterialTapTargetSize.shrinkWrap,
-                          ),
-                        ),
-                        Text("Unknown")
-                      ],
+                    Obx(
+                      () => RadioCustomWidget(
+                          value: "Unknown",
+                          group: _searchController.getGenderGroup,
+                          label: "Unknown",
+                          onChanged: _searchController.setGenderGroup),
                     ),
                   ],
                 ),
@@ -253,6 +175,36 @@ class _CharacterSearchPageState extends State<CharacterSearchPage> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class RadioCustomWidget extends StatelessWidget {
+  const RadioCustomWidget({
+    Key? key,
+    required this.value,
+    required this.group,
+    required this.label,
+    required this.onChanged,
+  }) : super(key: key);
+  final String value;
+  final String group;
+  final String label;
+  final ValueChanged<String?>? onChanged;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Radio<String>(
+          value: value,
+          toggleable: true,
+          groupValue: group,
+          onChanged: onChanged,
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
+        Text(label)
+      ],
     );
   }
 }
