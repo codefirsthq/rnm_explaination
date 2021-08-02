@@ -14,8 +14,8 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: CharacterSearchPage.TAG,
-      // initialRoute: HomePage.TAG,
+      // initialRoute: CharacterSearchPage.TAG,
+      initialRoute: HomePage.TAG,
     );
   }
 }
