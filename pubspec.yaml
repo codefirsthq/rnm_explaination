@@ -23,9 +23,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  bloc: ^7.0.0
   cupertino_icons: ^1.0.2
   dartz: ^0.10.0-nullsafety.2
   dio: ^4.0.0
+  flutter_bloc: ^7.1.0
   freezed_annotation: null
   get: ^4.3.0
   json_annotation: null
