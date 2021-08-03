@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:rnm_explaination/appliaction/character/cubit/character_cubit.dart';
 import 'package:rnm_explaination/domain/character/character_data_model.dart';
+import 'package:rnm_explaination/domain/character/i_character.dart';
+import 'package:rnm_explaination/injectable.dart';
 import 'package:rnm_explaination/presentation/home/character/character_search_page.dart';
 
 class CharacterPage extends StatefulWidget {
@@ -55,7 +57,7 @@ class _CharacterPageState extends State<CharacterPage> {
         ),
         SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
         BlocProvider(
-          create: (context) => CharacterCubit()..getAllCharacter(),
+          create: (context) => getIt<CharacterCubit>()..getAllCharacter(),
           child: BlocBuilder<CharacterCubit, CharacterState>(
             builder: (context, state) {
               return state.maybeMap(

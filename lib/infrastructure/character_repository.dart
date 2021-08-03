@@ -1,9 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:rnm_explaination/domain/character/character_response_data_model.dart';
+import 'package:rnm_explaination/domain/character/i_character.dart';
 
-class CharacterRepository {
+@LazySingleton(as: ICharacter)
+class CharacterRepository extends ICharacter {
   final Dio dio = Dio();
+
+  @override
   Future<Either<String, CharacterResponseDataModel>> getAllCharacters() async {
     Response response;
 
