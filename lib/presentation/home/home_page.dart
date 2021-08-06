@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rnm_explaination/presentation/home/character/character_page.dart';
 
+import 'episode/episode_page.dart';
+
 class HomePage extends StatefulWidget {
   static const String TAG = '/home_page';
   const HomePage({Key? key}) : super(key: key);
@@ -38,7 +40,7 @@ class _HomePageState extends State<HomePage> {
         },
         children: [
           CharacterPage(),
-          Container(color: Colors.yellow),
+          EpisodePage(),
           Container(color: Colors.red),
         ],
       ),

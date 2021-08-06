@@ -3,11 +3,11 @@ import 'package:injectable/injectable.dart';
 
 import 'injectable.config.dart';
 
-final getIt = GetIt.instance;  
-  
-@InjectableInit(  
-  initializerName: r'$initGetIt', // default  
-  preferRelativeImports: true, // default  
-  asExtension: false, // default  
-)  
-void configureDependencies() => $initGetIt(getIt);  
+final getIt = GetIt.instance;
+
+@InjectableInit(
+  initializerName: r'$initGetIt', // default
+  preferRelativeImports: true, // default
+  asExtension: false, // default
+)
+void configureDependencies() => $initGetIt(getIt);
