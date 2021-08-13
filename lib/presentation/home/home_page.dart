@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rnm_explaination/presentation/home/character/character_page.dart';
+import 'package:rnm_explaination/presentation/home/location/location_page.dart';
 
 import 'episode/episode_page.dart';
 
@@ -41,7 +42,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           CharacterPage(),
           EpisodePage(),
-          Container(color: Colors.red),
+          LocationPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
