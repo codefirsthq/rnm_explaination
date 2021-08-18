@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rnm_explaination/presentation/home/character/character_detail_page.dart';
 import 'package:rnm_explaination/presentation/home/character/character_search_page.dart';
 import 'package:rnm_explaination/routes/routes.dart';
 
@@ -14,7 +15,7 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // initialRoute: CharacterSearchPage.TAG,
+      // initialRoute: CharacterDetailPage.TAG,
       initialRoute: HomePage.TAG,
     );
   }
